@@ -42,12 +42,13 @@ public class SidebarDisplayer {
 		if (lines > 15 || lines <= 0)	{
 			throw new IllegalArgumentException("The lines must superior to 0 and inferior to 16");
 		}
-		if (textDisplay.contains(text))	{text += " ";}
+		if (textDisplay.contains(text))	{text += " "; setLineText(text, lines); return;}
+		
 		Score score = objective.getScore(text);
 		score.setScore(100-lines);
 		textDisplay.set(lines-1, text);
 		
-		if (lines != 1)	{
+		if (lines != 1 && !(textDisplay.get(lines-2) instanceof String))	{
 			setLineText("", lines-1);
 		}
 		
