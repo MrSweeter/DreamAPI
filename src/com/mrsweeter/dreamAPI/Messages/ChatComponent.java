@@ -91,7 +91,6 @@ public class ChatComponent {
 		net.md_5.bungee.api.chat.HoverEvent.Action action = net.md_5.bungee.api.chat.HoverEvent.Action.SHOW_TEXT;
 		if (!(event instanceof HoverEvent))	{event = new HoverEvent(action, new ComponentBuilder("§6Dream§aAPI").create());}
 		
-		if (pText == null || pText.length() == 0)	{text.setHoverEvent(event);}
 		else {
 			TextComponent b = new TextComponent(pText);
 			addStyle(b, color);

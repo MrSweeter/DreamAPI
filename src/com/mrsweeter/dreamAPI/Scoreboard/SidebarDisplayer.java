@@ -42,9 +42,17 @@ public class SidebarDisplayer {
 		if (lines > 15 || lines <= 0)	{
 			throw new IllegalArgumentException("The lines must superior to 0 and inferior to 16");
 		}
-		Score score = objective.getScore(text);
-		score.setScore(100-lines);
-		textDisplay.set(lines-1, text);
+		if (textDisplay.contains(text))	{text += " ";}
+		if (lines == 1 || textDisplay.get(lines-2) instanceof String)	{
+			Score score = objective.getScore(text);
+			score.setScore(100-lines);
+			textDisplay.set(lines-1, text);
+		} else {
+			Score score = objective.getScore(text);
+			score.setScore(100-lines);
+			textDisplay.set(lines-1, text);
+			setLineText("", lines-1);
+		}
 		
 	}
 	
@@ -73,6 +81,13 @@ public class SidebarDisplayer {
 		}
 		removeLine(lines);
 		setLineText(newText, lines);
+	}
+	
+	public String getTextLine(int lines)	{
+		if (lines > 15 || lines <= 0)	{
+			throw new IllegalArgumentException("The lines must superior to 0 and inferior to 16");
+		}
+		return textDisplay.get(lines-1);
 	}
 	
 	/**
