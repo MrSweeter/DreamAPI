@@ -27,7 +27,7 @@ public class SidebarDisplayer {
 	public SidebarDisplayer(String name)	{
 		scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
 		if (scoreboard.getObjective("msd-focus-040617") != null)	{scoreboard.getObjective("msd-focus-040617").unregister();}
-		objective = scoreboard.registerNewObjective("msd-sidebar-dream-040617", "dummy");
+		objective = scoreboard.registerNewObjective("msd-dream-040617", "dummy");
 		textDisplay = Arrays.asList(new String[15]);
 		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 		objective.setDisplayName(name);
@@ -43,14 +43,11 @@ public class SidebarDisplayer {
 			throw new IllegalArgumentException("The lines must superior to 0 and inferior to 16");
 		}
 		if (textDisplay.contains(text))	{text += " ";}
-		if (lines == 1 || textDisplay.get(lines-2) instanceof String)	{
-			Score score = objective.getScore(text);
-			score.setScore(100-lines);
-			textDisplay.set(lines-1, text);
-		} else {
-			Score score = objective.getScore(text);
-			score.setScore(100-lines);
-			textDisplay.set(lines-1, text);
+		Score score = objective.getScore(text);
+		score.setScore(100-lines);
+		textDisplay.set(lines-1, text);
+		
+		if (lines != 1)	{
 			setLineText("", lines-1);
 		}
 		
