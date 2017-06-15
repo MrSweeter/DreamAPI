@@ -32,7 +32,7 @@ public class ConfigurationCollection {
 	 * @return The PluginConfiguration, if file doesn't exist, it will be created
 	 */
 	public PluginConfiguration getConfigByName(String fileName)	{
-		if (this.configs.containsKey(fileName))	{
+		if (!this.configs.containsKey(fileName))	{
 			addFileConfiguration(fileName);
 		}
 		return this.configs.get(fileName);
