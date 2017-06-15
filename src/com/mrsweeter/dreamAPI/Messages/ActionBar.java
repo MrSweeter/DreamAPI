@@ -1,14 +1,15 @@
 package com.mrsweeter.dreamAPI.Messages;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import net.md_5.bungee.api.ChatColor;
-import net.minecraft.server.v1_11_R1.EntityPlayer;
-import net.minecraft.server.v1_11_R1.IChatBaseComponent;
-import net.minecraft.server.v1_11_R1.PacketPlayOutChat;
-import net.minecraft.server.v1_11_R1.PlayerConnection;
+import net.minecraft.server.v1_12_R1.ChatMessageType;
+import net.minecraft.server.v1_12_R1.EntityPlayer;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent;
+import net.minecraft.server.v1_12_R1.PacketPlayOutChat;
+import net.minecraft.server.v1_12_R1.PlayerConnection;
 /**
  * 
  * @author MrSweeter
@@ -41,7 +42,7 @@ public class ActionBar {
 	public void sendActionBar(Player player) {
 		
 		IChatBaseComponent chatComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + ChatColor.translateAlternateColorCodes('&', text) + "\"}");
-		PacketPlayOutChat playOutChat = new PacketPlayOutChat(chatComponent, (byte) 2);
+		PacketPlayOutChat playOutChat = new PacketPlayOutChat(chatComponent, ChatMessageType.GAME_INFO);
 		EntityPlayer handle = ((CraftPlayer)player).getHandle();
 		PlayerConnection connection = handle.playerConnection;
 		
