@@ -15,7 +15,7 @@ public class FormatedChatComponent {
 	private TextComponent text = new TextComponent("");
 	
 	/**
-	 * Create new text with color specified with '&' (like Essentials)
+	 * Create new text with color specified with '&amp;' (like Essentials)
 	 * @param pText The text to set
 	 */
 	public FormatedChatComponent(String pText)	{

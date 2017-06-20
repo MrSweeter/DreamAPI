@@ -110,7 +110,7 @@ public class ChatComponent {
 	/**
 	 * Convert an ChatComponent to FormatedChatComponent
 	 * (ChatComponent use in chat, and convert to display in title per example)
-	 * @return
+	 * @return FormatedChatComponent Text with § for color
 	 */
 	public FormatedChatComponent toFormatedChat()	{
 		return new FormatedChatComponent(text.toLegacyText());
