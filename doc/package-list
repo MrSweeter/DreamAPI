@@ -2,6 +2,5 @@ com.mrsweeter.dreamAPI
 com.mrsweeter.dreamAPI.Configuration
 com.mrsweeter.dreamAPI.CustomItem
 com.mrsweeter.dreamAPI.Messages
-com.mrsweeter.dreamAPI.MessagesTest
 com.mrsweeter.dreamAPI.Scoreboard
 com.mrsweeter.dreamAPI.Utils

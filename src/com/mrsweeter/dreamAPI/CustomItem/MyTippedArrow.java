@@ -91,11 +91,11 @@ public enum MyTippedArrow {
     }
 	
 	/**
-	 * Check if the arrow is a brewable in survival
+	 * Check if the arrow is a craftable in survival
 	 * 
-	 * @return true if arrow is brewable in survival (exist in creative inventory)
+	 * @return true if arrow is craftable in survival (exist in creative inventory)
 	 */
-	public boolean isBrewable()	{
+	public boolean isCraftable()	{
 		switch (this)	{
 		case SPEED_LONG_II:
 		case STRENGH_LONG_II:
