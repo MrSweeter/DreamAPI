@@ -2,7 +2,10 @@ package com.mrsweeter.dreamAPI.Configuration;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -51,6 +54,10 @@ public class PluginConfiguration extends YamlConfiguration {
      * @param folder - Name of the folder
      */
     public PluginConfiguration(JavaPlugin plugin, String fileName, String defaultsName, String folder) {
+    	
+    	if (fileName != null && !fileName.contains(".yml"))	{fileName += ".yml";}
+    	if (defaultsName != null && !defaultsName.contains(".yml"))	{defaultsName += ".yml";}
+    	
         this.plugin = plugin;
         this.defaults = defaultsName;
         if (folder != null)	{
@@ -68,18 +75,7 @@ public class PluginConfiguration extends YamlConfiguration {
      */
     public void reload() {
        
-        if (!file.exists()) {
-           
-            try {
-                file.getParentFile().mkdirs();
-                file.createNewFile();
-               
-            } catch (IOException exception) {
-                exception.printStackTrace();
-                plugin.getLogger().severe("Error while creating file " + file.getName());
-            }
-           
-        }
+        createIfNotExists(file);
        
         try {
             load(file);
@@ -105,6 +101,22 @@ public class PluginConfiguration extends YamlConfiguration {
            
         }
        
+    }
+    
+    private void createIfNotExists(File file)	{
+    	
+    	if (!file.exists()) {
+            
+            try {
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+               
+            } catch (IOException exception) {
+                exception.printStackTrace();
+                plugin.getLogger().severe("Error while creating file " + file.getName());
+            }
+           
+        }
     }
    
     /**

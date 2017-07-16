@@ -15,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ConfigurationCollection {
 	
 	Map<String, PluginConfiguration> configs;
+	Map<String, CommentedPluginConfiguration> commentedConfigs;
 	JavaPlugin pl;
 	
 	/**
@@ -36,6 +37,27 @@ public class ConfigurationCollection {
 			addFileConfiguration(fileName);
 		}
 		return this.configs.get(fileName);
+	}
+	
+	/**
+	 * Get specific commented configuration with name
+	 * @param fileName The name of researched file, without extension
+	 * @return The CommentedPluginConfiguration, if file doesn't exist, it will be created
+	 */
+	public CommentedPluginConfiguration getCommentedConfigByName(String fileName)	{
+		if (!this.commentedConfigs.containsKey(fileName))	{
+			addCommentedConfiguration(fileName);
+		}
+		return this.commentedConfigs.get(fileName);
+	}
+	
+	/**
+	 * Create a new commented file (plugins/YourPlugin/fileName.yml), using a default file in your plugin
+	 * Create new empty file, if you haven't put "fileName.yml" in your plugin
+	 * @param fileName The name to set for the new file
+	 */
+	public void addCommentedConfiguration(String fileName)	{
+		this.commentedConfigs.put(fileName, new CommentedPluginConfiguration(pl, fileName+".yml"));
 	}
 	
 	/**
