@@ -4,9 +4,9 @@ package com.mrsweeter.dreamAPI.Messages;
  * @author MrSweeter
  * 
  */
-public class BossBar {
+public class BossBarCustom {
 	/**
 	 * Not yet implemented
 	 */
-	public BossBar()	{}
+	public BossBarCustom()	{}
 }
