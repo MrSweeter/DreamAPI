@@ -68,7 +68,7 @@ public class ConfigurationCollection {
 	public void addFolderedConfiguration(String fileName, String folderName)	{
 		this.configs.put(folderName+fileName, new PluginConfiguration(pl, fileName+".yml", folderName));
 	}
-	
+		
 	/**
 	 * Create a new default file (plugins/YourPlugin/fileName.yml), using a default file in your plugin
 	 * Create new empty file, if you haven't put "fileName.yml" in your plugin
