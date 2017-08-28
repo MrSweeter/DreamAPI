@@ -3,6 +3,7 @@ package com.mrsweeter.dreamAPI.configuration;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -42,7 +43,8 @@ public class DConfigurationCollection implements Iterable<DConfiguration> {
 	 * @return DConfiguration
 	 */
 	public DConfiguration createConfigurationFile(String id, File file)	{
-		return this.files.put(id, new DConfiguration(plugin, file));	
+		this.files.put(id, new DConfiguration(plugin, file));
+		return this.files.get(id);
 	}
 	
 	/**
@@ -89,6 +91,14 @@ public class DConfigurationCollection implements Iterable<DConfiguration> {
 			file = iterator.next();
 			file.reload();
 		}
+	}
+	
+	/**
+	 * Gets all keys of configuration file
+	 * @return A Set with key
+	 */
+	public Set<String> getKey()	{
+		return files.keySet();
 	}
 	
 	@Override

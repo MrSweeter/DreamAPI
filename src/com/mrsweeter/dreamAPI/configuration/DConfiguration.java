@@ -33,7 +33,7 @@ public class DConfiguration extends YamlConfiguration	{
 		
 		reload();
 	}
-	
+		
 	/**
 	 * Creates new YamlConfiguration, without default file
 	 * @param plugin Your plugin instance
